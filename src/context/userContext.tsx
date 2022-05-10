@@ -57,9 +57,8 @@ export const UserProvider = ({ children }: UserContextProps) => {
         if (password && user) {
           setUser(loggedUser)
         }
-      } else {
-        console.log('errado')
       }
+      console.log('error')
     })
   }
 
