@@ -1,25 +1,43 @@
-import React, { useState } from 'react'
+import { UserContext } from 'context/userContext'
+import React, { useState, useContext } from 'react'
 import { Validation } from '../../types/validation-type'
 import * as S from './style'
+import Link from 'next/link'
 
 export default function Form() {
-  const [login, setLogin] = useState<Validation>()
+  const [login, setLogin] = useState<Validation>({ user: '', password: '' })
+
+  const { validateUser } = useContext(UserContext)
+
+  const HandleChange = (e: any) => {
+    setLogin({ ...login, [e.target.name]: e.target.value })
+  }
 
   return (
     <S.Form>
       <S.Box>
         <label htmlFor="user">User :</label>
-        <input type="text" placeholder="Input your user name" />
+        <input
+          type="text"
+          placeholder="Input your user name"
+          onChange={(e) => HandleChange(e)}
+        />
       </S.Box>
 
       <S.Box>
         <label htmlFor="password">Password :</label>
-        <input type="password" placeholder="Input your password" />
+        <input
+          type="password"
+          placeholder="Input your password"
+          onChange={(e) => HandleChange(e)}
+        />
       </S.Box>
 
       <S.Section>
-        <button>Login</button>
-        <button>Register</button>
+        <button onClick={() => validateUser(login)}>Login</button>
+        <Link href="/register">
+          <button>Register</button>
+        </Link>
       </S.Section>
     </S.Form>
   )

@@ -1,3 +1,4 @@
+import { UserProvider } from 'context/userContext'
 import Document, {
   Html,
   Head,
@@ -38,13 +39,15 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="pt-BR">
-        <Head />
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
+      <UserProvider>
+        <Html lang="pt-BR">
+          <Head />
+          <body>
+            <Main />
+            <NextScript />
+          </body>
+        </Html>
+      </UserProvider>
     )
   }
 }

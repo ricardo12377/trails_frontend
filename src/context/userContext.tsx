@@ -10,6 +10,7 @@ type UserContextProps = {
 type UserContextType = {
   isOpenModal: boolean
   setIsOpenModal: (newState: boolean) => void
+  validateUser: ({ user, password }: Validation) => void
 }
 
 export const UserContext = createContext<UserContextType>({} as UserContextType)
@@ -42,7 +43,7 @@ export const UserProvider = ({ children }: UserContextProps) => {
     setLoading(false)
   }, [])
 
-  const validacao = ({ user, password }: Validation) => {
+  const validateUser = ({ user, password }: Validation) => {
     users.map((item: any) => {
       const entry = item.login
       const pass = item.senha
@@ -63,7 +64,7 @@ export const UserProvider = ({ children }: UserContextProps) => {
   }
 
   return (
-    <UserContext.Provider value={{ isOpenModal, setIsOpenModal }}>
+    <UserContext.Provider value={{ isOpenModal, setIsOpenModal, validateUser }}>
       {children}
     </UserContext.Provider>
   )
