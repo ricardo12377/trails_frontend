@@ -2,6 +2,7 @@ import { createContext, ReactNode, useState, useEffect } from 'react'
 import { Validation } from 'types/validation-type'
 import axios from 'axios'
 import api from '../api/api'
+import { useRouter } from 'next/router'
 
 type UserContextProps = {
   children: ReactNode
@@ -20,6 +21,8 @@ export const UserProvider = ({ children }: UserContextProps) => {
   const [user, setUser] = useState({})
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
+
+  const router = useRouter()
 
   const fetchData = async () => {
     try {
@@ -57,6 +60,7 @@ export const UserProvider = ({ children }: UserContextProps) => {
         localStorage.setItem('user', JSON.stringify(loggedUser))
         if (password && user) {
           setUser(loggedUser)
+          router.push('/main')
         }
       }
       console.log('error')
