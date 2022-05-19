@@ -7,6 +7,7 @@ import Document, {
   DocumentContext
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import GlobalStyles from 'styles/global'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -43,6 +44,7 @@ export default class MyDocument extends Document {
         <Html lang="pt-BR">
           <Head />
           <body>
+            <GlobalStyles />
             <Main />
             <NextScript />
           </body>
