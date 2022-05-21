@@ -9,7 +9,7 @@ export default function Form() {
 
   const { validateUser } = useContext(UserContext)
 
-  const HandleChange = (e: any) => {
+  const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLogin({ ...login, [e.target.name]: e.target.value })
   }
 

@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useState, useEffect } from 'react'
 import { Validation } from 'types/validation-type'
-import axios from 'axios'
 import api from '../api/api'
 import { useRouter } from 'next/router'
 
@@ -14,6 +13,11 @@ type UserContextType = {
   validateUser: ({ user, password }: Validation) => void
 }
 
+type ProvisoryUserType = {
+  login: string
+  senha: string
+}
+
 export const UserContext = createContext<UserContextType>({} as UserContextType)
 
 export const UserProvider = ({ children }: UserContextProps) => {
@@ -23,6 +27,7 @@ export const UserProvider = ({ children }: UserContextProps) => {
   const [loading, setLoading] = useState(true)
 
   const router = useRouter()
+  console.log(user, loading)
 
   const fetchData = async () => {
     try {
@@ -47,7 +52,7 @@ export const UserProvider = ({ children }: UserContextProps) => {
   }, [])
 
   const validateUser = ({ user, password }: Validation) => {
-    users.map((item: any) => {
+    users.map((item: ProvisoryUserType) => {
       const entry = item.login
       const pass = item.senha
       if (entry.includes(user) && pass.includes(password)) {
