@@ -1,4 +1,4 @@
-import Form from 'components/form'
+import Form from 'components/login'
 import React from 'react'
 import styled from 'styled-components'
 

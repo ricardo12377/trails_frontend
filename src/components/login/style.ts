@@ -21,10 +21,14 @@ export const Box = styled.div`
   align-items: center;
   justify-content: center;
   color: black;
+`
 
-  input {
-    width: 50%;
-  }
+export const Label = styled.label`
+  font-size: 1.5em;
+`
+
+export const Input = styled.input`
+  width: 50%;
 `
 
 export const Section = styled.section`

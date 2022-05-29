@@ -11,6 +11,8 @@ type UserContextType = {
   isOpenModal: boolean
   setIsOpenModal: (newState: boolean) => void
   validateUser: ({ user, password }: Validation) => void
+  currentTrail: string
+  setCurrentTrail: (newState: string) => void
 }
 
 type ProvisoryUserType = {
@@ -25,6 +27,7 @@ export const UserProvider = ({ children }: UserContextProps) => {
   const [user, setUser] = useState({})
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
+  const [currentTrail, setCurrentTrail] = useState<string>('front-end')
 
   const router = useRouter()
   console.log(user, loading)
@@ -73,7 +76,15 @@ export const UserProvider = ({ children }: UserContextProps) => {
   }
 
   return (
-    <UserContext.Provider value={{ isOpenModal, setIsOpenModal, validateUser }}>
+    <UserContext.Provider
+      value={{
+        isOpenModal,
+        setIsOpenModal,
+        validateUser,
+        setCurrentTrail,
+        currentTrail
+      }}
+    >
       {children}
     </UserContext.Provider>
   )

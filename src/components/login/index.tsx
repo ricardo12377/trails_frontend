@@ -16,8 +16,8 @@ export default function Form() {
   return (
     <S.Form>
       <S.Box>
-        <label htmlFor="user">User :</label>
-        <input
+        <S.Label htmlFor="user">User :</S.Label>
+        <S.Input
           type="text"
           placeholder="Input your user name"
           onChange={(e) => HandleChange(e)}
@@ -25,8 +25,8 @@ export default function Form() {
       </S.Box>
 
       <S.Box>
-        <label htmlFor="password">Password :</label>
-        <input
+        <S.Label htmlFor="password">Password :</S.Label>
+        <S.Input
           type="password"
           placeholder="Input your password"
           onChange={(e) => HandleChange(e)}
