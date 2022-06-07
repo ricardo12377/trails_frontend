@@ -14,7 +14,8 @@ export default function main() {
 
 const Main = styled.div`
   height: 100vh;
-  width: 100%;
+  width: 100vw;
+  background-color: blue;
   padding: 0;
   margin: 0;
   display: flex;
